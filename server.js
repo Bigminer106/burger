@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('./public'));
 
-require('./routes/api-routes.js');
+require('./controllers/burgers_controller.js')(app);
 
 app.listen(PORT, () => {
   console.log('Listening on Port ' + PORT);

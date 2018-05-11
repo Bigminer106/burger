@@ -1,6 +1,31 @@
 const express = require('express');
-const burger = require('../models');
+const burger = require('../models/burger');
 
-var router = express();
+module.exports = app => {
+  app.get('/api/all'), (req, res) => {
+    Burger.selectAll({}).then(results => {
+      res.json(results);
+    });
+  };
 
-module.exports = router;
+  app.post('/api/new', (req, res) => {
+    console.log('Burger Data:');
+    console.log(req.body);
+
+    Burger.create({
+      burger_name: req.body.burger_name,
+      devoured: req.body.devoured
+    }).then(results => {
+      res.status(201).end();
+    });
+  });
+
+  app.put('/api/:id', (req, res) => {
+    Burger.update({
+      devoured: req.body.devoured,
+      id: req.body.id
+    }).then(results => {
+      res.status(200).end();
+    });
+  });
+};
