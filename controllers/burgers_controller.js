@@ -1,3 +1,6 @@
+// In all honesty, I'm not sure if the controller is the same as api-routes.
+// So I put the routes here in the controller.
+
 const express = require('express');
 const burger = require('../models/burger');
 
